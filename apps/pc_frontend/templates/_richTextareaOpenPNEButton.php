@@ -7,4 +7,3 @@
 ?> return false;">
 <?php echo op_image_tag($config['imageURL'], array('alt' => '')) ?></a>
 <?php endforeach; ?>
-<?php echo javascript_tag('$(function(){ $("#'.$id.'").opEmoji(); });'); ?>

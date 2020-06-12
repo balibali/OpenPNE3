@@ -678,43 +678,6 @@ function op_truncate_callback($string, $width, $etc = '')
 
   if (mb_strwidth($string) > $width)
   {
-    // for Emoji
-    $offset = 0;
-    $tmp_string = $string;
-    while (preg_match('/\[[ies]:[0-9]{1,3}\]/', $tmp_string, $matches, PREG_OFFSET_CAPTURE))
-    {
-      $emoji_str = $matches[0][0];
-      $emoji_pos = $matches[0][1] + $offset;
-      $emoji_len = strlen($emoji_str);
-      $emoji_width = $emoji_len;
-
-      // a width by Emoji
-      $substr_width = mb_strwidth(substr($string, 0, $emoji_pos));
-
-      if ($substr_width >= $width)  // Emoji position is after a width
-      {
-        break;
-      }
-
-      if ($substr_width + 2 == $width)  // substr_width + Emoji width is equal to a width
-      {
-        $width = $substr_width + $emoji_width;
-        break;
-      }
-
-      if ($substr_width + 2 > $width)  // substr_width + Emoji width is rather than a width
-      {
-        $width = $substr_width;
-        break;
-      }
-
-      // less than a width
-      $offset = $emoji_pos + $emoji_len;
-      $width = $width + $emoji_width - 2;
-
-      $tmp_string = substr($string, $offset);
-    }
-
     $string = mb_strimwidth($string, 0, $width, '', 'UTF-8').$etc;
   }
 

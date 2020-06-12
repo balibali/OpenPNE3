@@ -674,10 +674,6 @@
         <target>文字色変更</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Input Emoji(DoCoMo)</source>
-        <target>絵文字挿入(DoCoMo)</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>General Configuration</source>
         <target>一般的な設定</target>
       </trans-unit>

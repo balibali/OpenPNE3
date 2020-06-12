@@ -11,9 +11,6 @@ xrds_header:
 
 security:  ~
 
-emoji:
-  class: opEmojiFilter
-
 cache:     ~
 
 execution:
