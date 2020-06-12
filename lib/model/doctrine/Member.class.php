@@ -214,14 +214,11 @@ class Member extends BaseMember implements opAccessControlRecordInterface
     return strtotime($this->getConfig('lastLogin'));
   }
 
+  /**
+   * @deprecated
+   */
   public function isOnBlackList()
   {
-    $uid = $this->getConfig('mobile_uid');
-    if ($uid)
-    {
-      return (bool)Doctrine::getTable('Blacklist')->retrieveByUid($uid);
-    }
-
     return false;
   }
 

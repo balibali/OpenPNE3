@@ -236,16 +236,6 @@ class opSecurityUser extends opAdaptableUser
     if ($memberId)
     {
       $this->setMemberId($memberId);
-
-      opActivateBehavior::disable();
-      if ($this->getMember()->isOnBlacklist())
-      {
-        opActivateBehavior::enable();
-        $this->logout();
-
-        return false;
-      }
-      opActivateBehavior::enable();
     }
 
     $this->initializeUserStatus();

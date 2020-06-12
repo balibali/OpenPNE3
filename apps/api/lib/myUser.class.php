@@ -58,7 +58,7 @@ class myUser extends sfBasicSecurityUser
     }
 
     $member = $this->getMemberByApiKey($apiKey);
-    if (is_null($member) || $member->isOnBlackList() || $member->getIsLoginRejected())
+    if (is_null($member) || $member->getIsLoginRejected())
     {
       $exception = new opErrorHttpException('Invalid API key.');
       throw $exception->setHttpStatusCode(401);

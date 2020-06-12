@@ -141,58 +141,6 @@ class memberActions extends sfActions
     return sfView::SUCCESS;
   }
 
- /**
-  * Executes blacklist action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeBlacklist(sfWebRequest $request)
-  {
-    $uid = $request->getParameter('uid');
-
-    $this->pager = new sfDoctrinePager('Blacklist', 20);
-    $this->pager->setPage($request->getParameter('page', 1));
-    $this->pager->init();
-
-    $this->form = new BlacklistForm();
-    if ($uid)
-    {
-      $this->form->setDefault('uid', $uid);
-    }
-    if ($request->isMethod(sfWebRequest::POST))
-    {
-      $result = $this->form->bindAndSave($request->getParameter('blacklist'));
-      $this->redirectIf($result, 'member/blacklist');
-    }
-
-    return sfView::SUCCESS;
-  }
-
- /**
-  * Executes blacklistDelete action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeBlacklistDelete(sfWebRequest $request)
-  {
-    $this->blacklist = Doctrine::getTable('Blacklist')->find($request->getParameter('id'));
-    $this->forward404Unless($this->blacklist);
-
-    $this->form = new sfForm();
-    if ($request->isMethod(sfWebRequest::POST))
-    {
-      $field = sfForm::getCSRFFieldName();
-      $this->form->bind(array($field => $request->getParameter($field)));
-      if ($this->form->isValid())
-      {
-        $this->blacklist->delete();
-        $this->redirect('member/blacklist');
-      }
-    }
-
-    return sfView::SUCCESS;
-  }
-
   /**
    * Executes reissuePassword action
    *

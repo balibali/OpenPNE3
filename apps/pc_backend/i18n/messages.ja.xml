@@ -1198,10 +1198,6 @@
         <target>パスワード再発行</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Add mobile UID to blacklist</source>
-        <target>携帯電話個体識別番号をブラックリストに登録</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Invited by</source>
         <target>招待者</target>
       </trans-unit>
@@ -1246,26 +1242,6 @@
         <target>パスワード変更</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Blacklist Management</source>
-        <target>ブラックリスト管理</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Add to blacklist</source>
-        <target>ブラックリストに追加</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Blacklist</source>
-        <target>ブラックリスト一覧</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>The blacklist is empty</source>
-        <target>ブラックリストが登録されていません。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Memo</source>
-        <target>メモ</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Invite Members</source>
         <target>招待メール送信</target>
       </trans-unit>
@@ -1296,14 +1272,6 @@
       <trans-unit id="">
         <source>The data of this member will be lost forever.</source>
         <target>強制退会させると、このメンバーに関する情報は削除され元に戻すことはできません。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Delete Blacklist</source>
-        <target>ブラックリスト削除</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Do you want to delete the following?</source>
-        <target>以下の内容を本当に削除しますか？</target>
       </trans-unit>
       <trans-unit id="">
         <source>Authentication plugin is not available.</source>

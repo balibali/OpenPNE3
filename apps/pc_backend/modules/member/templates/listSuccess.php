@@ -25,8 +25,6 @@
 <?php echo image_tag('backend/icn_permit.gif', array('alt' => __('Unban'))) ?>: <?php echo __('Unban') ?>
 &nbsp;
 <?php echo image_tag('backend/icn_passwd.gif', array('alt' => __('Reissue password'))) ?>: <?php echo __('Reissue password') ?>
-&nbsp;
-<?php echo image_tag('backend/icn_blacklist.gif', array('alt' => __('Add mobile UID to blacklist'))) ?>: <?php echo __('Add mobile UID to blacklist') ?>
 </p>
 
 <table>
@@ -38,7 +36,7 @@
 </tr>
 
 <tr>
-<th colspan="4"><?php echo __('Operation') ?></th>
+<th colspan="3"><?php echo __('Operation') ?></th>
 <th><?php echo __('ID') ?></th>
 <th><?php echo __('%Nickname%') ?></th>
 <th><?php echo __('Invited by') ?></th>
@@ -72,9 +70,6 @@
 </td>
 <td>
 <?php echo link_to(image_tag('backend/icn_passwd.gif', array('alt' => __('Reissue password'))), 'member/reissuePassword?id='.$member->getId()) ?>
-</td>
-<td>
-<?php echo link_to(image_tag('backend/icn_blacklist.gif', array('alt' => __('Add mobile UID to blacklist'))), 'member/blacklist?uid='.$member->getConfig('mobile_uid')) ?>
 </td>
 <td><?php echo $member->getId() ?></td>
 <td><?php echo $member->getName() ?></td>
