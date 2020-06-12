@@ -19,7 +19,6 @@ class opSnsTermForm extends sfForm
 {
   protected static $availableApplications = array(
     'pc_frontend' => 'pc',
-    'mobile_frontend' => 'mobile',
   );
 
   public function configure()
