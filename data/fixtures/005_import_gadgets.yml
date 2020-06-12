@@ -24,18 +24,8 @@ Gadget:
     name: "languageSelecterBox"
     sort_order: 10
 
-  mobile_gadget_information:
-    type: "mobileTop"
-    name: "informationBox"
-    sort_order: 10
-
   login_gadget_login_form_box:
     type: "loginContents"
-    name: "loginForm"
-    sort_order: 10
-
-  mobile_login_gadget_login_form_box:
-    type: "mobileLoginContents"
     name: "loginForm"
     sort_order: 10
 
@@ -58,16 +48,6 @@ Gadget:
     type: "profileSideMenu"
     name: "profileListBox"
     sort_order: 15
-
-  mobile_profile_gadget_friend_table:
-    type: "mobileProfileBottom"
-    name: "friendListBox"
-    sort_order: 10
-
-  mobile_profile_gadget_community_table:
-    type: "mobileProfileBottom"
-    name: "communityJoinListBox"
-    sort_order: 20
 
   smartphone_profile_gadget_profile:
     type: "smartphoneProfileContents"
@@ -98,5 +78,3 @@ Gadget:
     type: "smartphoneLoginContents"
     name: "loginForm"
     sort_order: 10
-
-

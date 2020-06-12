@@ -44,8 +44,7 @@ class opDesignHtmlForm extends sfForm
   {
     return array(
       'footer_before', 'footer_after', 'pc_html_head', 'pc_html_top',
-      'pc_html_top2', 'pc_html_bottom', 'pc_html_bottom2', 'mobile_html_head',
-      'mobile_header', 'mobile_footer',
+      'pc_html_top2', 'pc_html_bottom', 'pc_html_bottom2',
     );
   }
 }

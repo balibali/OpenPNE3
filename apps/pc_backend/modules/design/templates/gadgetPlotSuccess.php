@@ -9,12 +9,6 @@
 <?php include_partial('plotGadget', array('type' => $typeName, 'gadgets' => $gadgets[$typeName], 'gadgetConfig' => $gadgetConfig)); ?>
 <?php endif; ?>
 
-<?php if ('mobile' == $type || 'mobileProfile' == $type): ?>
-<div class="fixedGadget">
-<?php echo __('メニュー（変更不可）') ?>
-</div>
-<?php endif; ?>
-
 <?php if ($layoutPattern === 'layoutA' || $layoutPattern === 'layoutB') : ?>
 <?php $typeName = op_get_gadget_type($type, 'sideMenu') ?>
 <?php include_partial('plotGadget', array('type' => $typeName, 'gadgets' => $gadgets[$typeName], 'gadgetConfig' => $gadgetConfig)); ?>
@@ -22,12 +16,6 @@
 
 <?php $typeName = op_get_gadget_type($type, 'contents') ?>
 <?php include_partial('plotGadget', array('type' => $typeName, 'gadgets' => $gadgets[$typeName], 'gadgetConfig' => $gadgetConfig)); ?>
-
-<?php if ('mobile' == $type): ?>
-<div class="fixedGadget">
-<?php echo __('設定変更（変更不可）') ?>
-</div>
-<?php endif; ?>
 
 <?php if ($layoutPattern !== 'layoutD'): ?>
 <?php $typeName = op_get_gadget_type($type, 'bottom') ?>

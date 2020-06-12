@@ -307,9 +307,6 @@ class designActions extends sfActions
       'pc_html_top'      => 'HTML Insertion Area B',
       'pc_html_bottom2'  => 'HTML Insertion Area C',
       'pc_html_bottom'   => 'HTML Insertion Area D',
-      'mobile_html_head' => 'HTML Insertion Area (in HTML head)',
-      'mobile_header'    => 'HTML Insertion Area (in page header)',
-      'mobile_footer'    => 'HTML Insertion Area (in page footer)',
     );
 
     $snsConfigSettings = sfConfig::get('openpne_sns_config');
@@ -324,23 +321,6 @@ class designActions extends sfActions
         $this->form->save();
         $this->getUser()->setFlash('notice', 'Saved.');
         $this->redirect('design/html?type='.$this->type);
-      }
-    }
-  }
-
-  public function executeMobileColorConfig(sfWebRequest $request)
-  {
-    $this->presetList = (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/mobile_preset_color.yml'));
-
-    $this->form = new opMobileColorConfigForm();
-    if ($request->isMethod(sfRequest::POST))
-    {
-      $this->form->bind($request->getParameter('color'));
-      if ($this->form->isValid())
-      {
-        $this->form->save();
-        $this->getUser()->setFlash('notice', 'Saved.');
-        $this->redirect('design/mobileColorConfig');
       }
     }
   }

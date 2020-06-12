@@ -18,13 +18,6 @@
 <?php endforeach; ?>
 </ul>
 
-<h3><?php echo __('All Mobile Pages') ?></h3>
-<ul>
-<?php foreach (array('mobile_html_head', 'mobile_header', 'mobile_footer') as $_type): ?>
-  <li><?php echo link_to(__($typeCaptions[$_type]), 'design/html?type='.$_type) ?></li>
-<?php endforeach; ?>
-</ul>
-
 <table>
 <?php echo $form->renderFormTag(url_for('design/html?type='.$type)) ?>
 <?php echo $form ?>

@@ -90,22 +90,12 @@ body
 #plotLoginContents div,
 #plotLoginBottom div,
 #plotSideBannerContents div,
-#plotMobileTop div,
-#plotMobileContents div,
-#plotMobileBottom div,
-#plotMobileLoginContents div,
-#plotMobileProfileTop div,
-#plotMobileProfileContents div,
-#plotMobileProfileBottom div,
-#plotMobileHeaderContents div,
-#plotMobileFooterContents div,
 #plotSmartphoneContents div,
 #plotSmartphoneProfileContents div,
 #plotSmartphoneCommunityContents div,
 #plotSmartphoneLoginContents div,
 #plotSmartphoneFooterContents div,
-#plotDailyNewsContents div,
-#plotMobileDailyNewsContents div
+#plotDailyNewsContents div
 {
   height: 35px;
   margin-bottom: 5px;
@@ -128,22 +118,12 @@ body
 #plotLoginContents div.emptyGadget,
 #plotLoginBottom div.emptyGadget,
 #plotSideBannerContents div.emptyGadget,
-#plotMobileTop div.emptyGadget,
-#plotMobileContents div.emptyGadget,
-#plotMobileBottom div.emptyGadget,
-#plotMobileProfileTop div.emptyGadget,
-#plotMobileProfileContents div.emptyGadget,
-#plotMobileProfileBottom div.emptyGadget,
-#plotMobileLoginContents div.emptyGadget,
-#plotMobileHeaderContents div.emptyGadget,
-#plotMobileFooterContents div.emptyGadget,
 #plotSmartphoneContents div.emptyGadget,
 #plotSmartphoneProfileContents div.emptyGadget,
 #plotSmartphoneCommunityContents div.emptyGadget,
 #plotSmartphoneLoginContents div.emptyGadget,
 #plotSmartphoneFooterContents div.emptyGadget,
-#plotDailyNewsContents div.emptyGadget,
-#plotMobileDailyNewsContents div.emptyGadget
+#plotDailyNewsContents div.emptyGadget
 {
   background-color: transparent;
   border-style: dashed;
