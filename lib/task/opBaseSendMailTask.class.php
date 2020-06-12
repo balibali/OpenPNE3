@@ -44,10 +44,6 @@ abstract class opBaseSendMailTask extends sfDoctrineBaseTask
   protected function getContextByEmailAddress($address)
   {
     $application = 'pc_frontend';
-    if (opToolkit::isMobileEmailAddress($address))
-    {
-      $application = 'mobile_frontend';
-    }
 
     if (!sfContext::hasInstance($application))
     {

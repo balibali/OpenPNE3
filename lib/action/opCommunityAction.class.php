@@ -433,12 +433,10 @@ abstract class opCommunityAction extends sfActions
         'new_member' => $member,
       );
 
-      $isSendPc     = $community->getConfig('is_send_pc_joinCommunity_mail');
-      $isSendMobile = $community->getConfig('is_send_mobile_joinCommunity_mail');
+      $isSendPc = $community->getConfig('is_send_pc_joinCommunity_mail');
 
       $options = array(
-        'is_send_pc'     => (bool)(null === $isSendPc ? 1 : $isSendPc),
-        'is_send_mobile' => (bool)(null === $isSendMobile ? 1 : $isSendMobile)
+        'is_send_pc' => (bool)(null === $isSendPc ? 1 : $isSendPc),
       );
 
       opMailSend::sendTemplateMailToMember('joinCommunity', $community->getAdminMember(), $params, $options);

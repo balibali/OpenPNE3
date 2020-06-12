@@ -29,7 +29,7 @@ class opNotificationMailTemplateLoaderFilesystem extends sfTemplateSwitchableLoa
 
   public function doLoad($template, $renderer = 'php')
   {
-    $template = str_replace(array('pc_', 'mobile_', 'admin_'), array('pc/_', 'mobile/_', 'admin/_'), $template);
+    $template = str_replace(array('pc_', 'admin_'), array('pc/_', 'admin/_'), $template);
 
     return parent::doLoad($template, $renderer);
   }

@@ -47,8 +47,6 @@
 <dt>
 <?php if ('pc' === $target): ?>
 <?php echo __('For PC E-mail Address') ?>
-<?php elseif ('mobile' === $target): ?>
-<?php echo __('For Mobile E-mail Address') ?>
 <?php elseif ('admin' === $target): ?>
 <?php echo __('For Administration E-mail Address') ?>
 <?php endif; ?>

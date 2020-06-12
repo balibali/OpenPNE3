@@ -19,7 +19,6 @@ class ReissuePasswordForm extends MemberConfigPasswordForm
     $params = array(
       'mailAddress' => $emailAddress,
       'newPassword' => $this->plainPassword,
-      'isMobile' => opToolkit::isMobileEmailAddress($emailAddress)
     );
     $this->sendConfirmMail($emailAddress, $params);
   }

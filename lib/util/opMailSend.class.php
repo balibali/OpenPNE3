@@ -116,7 +116,7 @@ class opMailSend
 
     if (empty($params['target']))
     {
-      $target = opToolkit::isMobileEmailAddress($to) ? 'mobile' : 'pc';
+      $target = 'pc';
     }
     else
     {
@@ -163,9 +163,7 @@ class opMailSend
     $options = array_merge(array(
       'from'           => opConfig::get('admin_mail_address'),
       'is_send_pc'     => true,
-      'is_send_mobile' => true,
       'pc_params'      => array(),
-      'mobile_params'  => array()
     ), $options);
 
     // to pc
@@ -179,19 +177,6 @@ class opMailSend
     {
       opMailSend::sendTemplateMail($template, $address, $options['from'],
         array_merge($params, $options['pc_params']), $context);
-    }
-
-    // to mobile
-    if ($options['is_send_mobile'] && ($address = $member->getConfig('mobile_address')) &&
-      (
-        !isset($mailConfigs['mobile'][$template]['member_configurable']) ||
-        !$mailConfigs['mobile'][$template]['member_configurable'] ||
-        $member->getConfig('is_send_mobile_'.$template.'_mail', true)
-      )
-    )
-    {
-      opMailSend::sendTemplateMail($template, $address, $options['from'],
-        array_merge($params, $options['mobile_params']), $context);
     }
   }
 

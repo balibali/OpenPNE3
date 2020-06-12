@@ -134,7 +134,6 @@ class InviteForm extends MemberConfigPcAddressForm
     $params = array(
       'token'    => $token,
       'authMode' => $authMode,
-      'isMobile' => opToolkit::isMobileEmailAddress($to),
       'name'     => $this->getOption('invited') ? sfContext::getInstance()->getUser()->getMember()->getName() : null,
       'message'  => $this->getOption('invited') ? $this->getValue('message') : null,
       'subject' => opConfig::get('sns_name').'招待状',

@@ -62,7 +62,7 @@ class CommunityConfigForm extends BaseForm
       $this->setConfigWidget($key);
     }
 
-    $app = 'mobile_frontend' == sfConfig::get('sf_app') ? 'mobile' : 'pc';
+    $app = 'pc';
     $template = 'joinCommunity';
     $notificationMail = Doctrine::getTable('NotificationMail')->findOneByName($app.'_'.$template);
 

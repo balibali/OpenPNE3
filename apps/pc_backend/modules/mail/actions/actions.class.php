@@ -12,6 +12,7 @@ class mailActions extends sfActions
   public function preExecute()
   {
     $this->config = include(sfContext::getInstance()->getConfigCache()->checkConfig('config/mail_template.yml'));
+    unset($this->config['mobile']);
   }
 
   public function executeConfig(sfWebRequest $request)

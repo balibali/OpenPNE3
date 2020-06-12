@@ -27,7 +27,7 @@ class MemberConfigMailForm extends MemberConfigForm
   public function configure()
   {
     $configs = Doctrine::getTable('NotificationMail')->getConfigs();
-    $app = 'mobile_frontend' == sfConfig::get('sf_app') ? 'mobile' : 'pc';
+    $app = 'pc';
     if (!isset($configs[$app]))
     {
       return;

@@ -25,7 +25,7 @@ EOF;
 
     $this->addOptions(
       array(
-        new sfCommandOption('app', null, sfCommandOption::PARAMETER_OPTIONAL, 'send to pc or mobile', null),
+        new sfCommandOption('app', null, sfCommandOption::PARAMETER_OPTIONAL, '@deprecated pc_frontend only', null),
       )
     );
   }
@@ -34,33 +34,17 @@ EOF;
   {
     parent::execute($arguments, $options);
 
-    $expectedOptions = array('pc_frontend', 'mobile_frontend');
+    if (isset($options['app']) && $options['app'] !== 'pc_frontend')
+    {
+      throw new Exception('invalid option');
+    }
 
-    if (isset($options['app']))
-    {
-      if (in_array($options['app'], $expectedOptions))
-      {
-        $this->sendDailyNews($options['app']);
-      }
-      else
-      {
-        throw new Exception('invalid option');
-      }
-    }
-    else
-    {
-      $php = $this->findPhpBinary();
-      foreach ($expectedOptions as $app)
-      {
-        exec($php.' '.sfConfig::get('sf_root_dir').'/symfony openpne:send-daily-news --app='.$app);
-      }
-    }
+    $this->sendDailyNews('pc_frontend');
   }
 
   private function sendDailyNews($app)
   {
-    $isAppMobile = 'mobile_frontend' === $app;
-    $dailyNewsName = $isAppMobile ?  'mobileDailyNews' : 'dailyNews';
+    $dailyNewsName = 'dailyNews';
     $context = sfContext::createInstance($this->createConfiguration($app, 'prod'), $app);
 
     $gadgets = Doctrine::getTable('Gadget')->retrieveGadgetsByTypesName($dailyNewsName);
@@ -70,10 +54,6 @@ EOF;
     foreach ($targetMembers as $member)
     {
       $address = $member->getEmailAddress();
-      if ($isAppMobile !== opToolkit::isMobileEmailAddress($address))
-      {
-        continue;
-      }
 
       $dailyNewsConfig = $member->getConfig('daily_news');
       if (null !== $dailyNewsConfig && 0 === (int)$dailyNewsConfig)
@@ -123,38 +103,4 @@ EOF;
 
     return in_array($day, opConfig::get('daily_news_day'));
   }
-
-  private function findPhpBinary()
-  {
-    if (defined('PHP_BINARY') && PHP_BINARY)
-    {
-      return PHP_BINARY;
-    }
-
-    if (false !== strpos(basename($php = $_SERVER['_']), 'php'))
-    {
-      return $php;
-    }
-
-    // from https://github.com/symfony/Process/blob/379b35a41a2749cf7361dda0f03e04410daaca4c/PhpExecutableFinder.php
-    $suffixes = DIRECTORY_SEPARATOR == '\\' ? (getenv('PATHEXT') ? explode(PATH_SEPARATOR, getenv('PATHEXT')) : array('.exe', '.bat', '.cmd', '.com')) : array('');
-    foreach ($suffixes as $suffix)
-    {
-      if (is_executable($php = PHP_BINDIR.DIRECTORY_SEPARATOR.'php'.$suffix))
-      {
-        return $php;
-      }
-    }
-
-    if ($php = getenv('PHP_PEAR_PHP_BIN'))
-    {
-      if (is_executable($php))
-      {
-        return $php;
-      }
-    }
-
-    return sfToolkit::getPhpCli();
-  }
-
 }
