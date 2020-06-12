@@ -212,7 +212,7 @@ class navigationActions extends sfActions
 
   private function getSnsTerms($app)
   {
-    $app = 'mobile' == $app ? 'mobile_frontend' : 'pc_frontend';
+    $app = 'pc_frontend';
     $availableTerms = (array)include(sfContext::getInstance()->getConfigCache()->checkConfig('config/sns_term.yml'));
 
     $snsTerms = array();

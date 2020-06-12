@@ -23,15 +23,6 @@ class NavigationTable extends Doctrine_Table
   {
     switch($appName)
     {
-      case 'mobile' :
-        return array(
-          'mobile_global',
-          'mobile_home',
-          'mobile_home_center',
-          'mobile_home_side',
-          'mobile_friend',
-          'mobile_community',
-        );
       case 'smartphone' :
         return array(
           'smartphone_insecure',
