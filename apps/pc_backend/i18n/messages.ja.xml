@@ -1214,10 +1214,6 @@
         <target>携帯メールアドレス</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Mobile UID</source>
-        <target>携帯電話個体識別番号（暗号化済）</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Ban Setting</source>
         <target>ログイン停止設定</target>
       </trans-unit>

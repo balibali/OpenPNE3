@@ -253,33 +253,6 @@ class memberActions extends opMemberAction
     return sfView::SUCCESS;
   }
 
- /**
-  * Executes registerMobileToRegisterEnd action
-  *
-  * @param opWebRequest $request A request object
-  */
-  public function executeRegisterMobileToRegisterEnd(opWebRequest $request)
-  {
-    opActivateBehavior::disable();
-    $this->form = new registerMobileForm($this->getUser()->getMember());
-    opActivateBehavior::enable();
-    if ($request->isMethod(sfWebRequest::POST))
-    {
-      $this->form->bind($request->getParameter('member_config'));
-      if ($this->form->isValid())
-      {
-        $this->form->save();
-        $this->redirect('member/registerMobileToRegisterEndFinish');
-      }
-    }
-
-    return sfView::SUCCESS;
-  }
-
-  public function executeRegisterMobileToRegisterEndFinish(opWebRequest $request)
-  {
-  }
-
   /**
    * Executes changeLanguage action
    *

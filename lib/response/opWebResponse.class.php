@@ -111,31 +111,6 @@ class opWebResponse extends sfWebResponse
     return $result;
   }
 
-  public function generateMobileUidCookie()
-  {
-    $request = sfContext::getInstance()->getRequest();
-    if (!$request->isMobile() || !$request->isCookie())
-    {
-      return false;
-    }
-
-    $value = opToolkit::getRandom();
-    $this->setCookie(opWebRequest::MOBILE_UID_COOKIE_NAME, $value, strtotime('+20years'));
-
-    return $value;
-  }
-
-  public function deleteMobileUidCookie()
-  {
-    $request = sfContext::getInstance()->getRequest();
-    if (!$request->isMobile() || !$request->isCookie())
-    {
-      return false;
-    }
-
-    $this->setCookie(opWebRequest::MOBILE_UID_COOKIE_NAME, '', time() - 3600);
-  }
-
   /**
    * Adds a stylesheet to the current smartphone web response.
    *

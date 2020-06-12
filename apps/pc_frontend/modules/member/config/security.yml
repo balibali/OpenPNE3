@@ -14,12 +14,6 @@ configComplete:
 changeLanguage:
   is_secure: false
 
-registerMobileToRegisterEnd:
-  is_secure: false
-
-registerMobileToRegisterEndFinish:
-  is_secure: false
-
 profile:
   is_secure: both
 

@@ -51,7 +51,6 @@
 <?php endforeach; ?>
 <th><?php echo __('PC email') ?></th>
 <th><?php echo __('Mobile email') ?></th>
-<th><?php echo __('Mobile UID') ?></th>
 </tr>
 
 <?php foreach ($pager->getResults() as $i => $member): ?>
@@ -84,7 +83,6 @@
 <?php endforeach; ?>
 <td><?php echo $member->getConfig('pc_address') ?></td>
 <td><?php echo $member->getConfig('mobile_address') ?></td>
-<td><?php echo $member->getConfig('mobile_uid') ?></td>
 </tr>
 <?php endforeach; ?>
 

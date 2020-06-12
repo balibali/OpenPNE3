@@ -11,9 +11,6 @@ config/gadget_layout_config.yml:
 config/mobile_mail_domain.yml:
   class: sfSimpleYamlConfigHandler
 
-config/mobile_ip_address.yml:
-  class: sfSimpleYamlConfigHandler
-
 config/sns_term.yml:
   class: sfSimpleYamlConfigHandler
 

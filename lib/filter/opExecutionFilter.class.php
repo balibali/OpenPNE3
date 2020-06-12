@@ -17,9 +17,6 @@
  */
 class opExecutionFilter extends sfExecutionFilter
 {
-  protected $retrivingMobileUIDActions = array('member/register', 'member/registerInput', 'member/registerEnd', 'member/configUID', 'member/registerMobileToRegisterEnd');
-  protected $mobileUIDAuthModeName = 'MobileUID';
-
   public static function notifyPreExecuteActionEvent($subject, sfEventDispatcher $dispatcher, sfAction $actionInstance)
   {
     $moduleName = $actionInstance->getModuleName();
@@ -49,30 +46,6 @@ class opExecutionFilter extends sfExecutionFilter
 
     $dispatcher->notify(new sfEvent($subject, 'op_action.post_execute_'.$moduleName.'_'.$actionName, $params));
     $dispatcher->notify(new sfEvent($subject, 'op_action.post_execute', $params));
-  }
-
-  protected function needToRetrieveMobileUID($moduleName, $actionName, $request, $sslSelectableList)
-  {
-    if ('mobile_frontend' !== sfConfig::get('sf_app'))
-    {
-      return false;
-    }
-
-    $action = $moduleName.'/'.$actionName;
-
-    if (in_array($action, $sslSelectableList[sfConfig::get('sf_app')]))
-    {
-      if (in_array($action, $this->retrivingMobileUIDActions))
-      {
-        return true;
-      }
-      elseif ('member/login' === $action && $request->getParameter('authMode') === $this->mobileUIDAuthModeName)
-      {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   protected function handleSsl($actionInstance)
@@ -119,12 +92,6 @@ class opExecutionFilter extends sfExecutionFilter
 
         $actionInstance->redirect($baseUrl.$currentPath);
       }
-      elseif ($this->needToRetrieveMobileUID($moduleName, $actionName, $request, $sslSelectableList) && $request->isSecure())
-      {
-        $baseUrl = sfConfig::get('op_base_url');
-
-        $actionInstance->redirect($baseUrl.$currentPath);
-      }
     }
   }
 
@@ -133,11 +100,6 @@ class opExecutionFilter extends sfExecutionFilter
     $moduleName = $actionInstance->getModuleName();
     $actionName = $actionInstance->getActionName();
     $request = $actionInstance->getRequest();
-
-    if ($request->needToRedirectToSoftBankGateway())
-    {
-      $request->redirectToSoftBankGateway();
-    }
 
     $this->handleSsl($actionInstance);
 

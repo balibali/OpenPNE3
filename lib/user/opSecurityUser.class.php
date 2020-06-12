@@ -247,31 +247,8 @@ class opSecurityUser extends opAdaptableUser
         $this->setRememberLoginCookie();
       }
 
-      // set mobile_cookie_uid for easy login
-      $cookieUid = sfContext::getInstance()->getResponse()->generateMobileUidCookie();
-      if ($cookieUid)
-      {
-        $this->getMember()->setConfig('mobile_cookie_uid', $cookieUid);
-      }
-
       $this->setCurrentAuthMode($this->getAuthAdapter()->getAuthModeName());
       $uri = $this->getAuthAdapter()->getAuthForm()->getValue('next_uri');
-
-      // sharing session id between HTTP and HTTPS is needed
-      $request = sfContext::getInstance()->getRequest();
-      if (sfConfig::get('app_is_mobile', false)
-        && sfConfig::get('op_use_ssl', false)
-        && $request->isSecure()
-        && ($request->getMobile()->isSoftBank() || $request->getMobile()->isEZweb())
-      )
-      {
-        $item = $this->encryptSid(session_id());
-
-        $uri = '@member_setSid?next_uri='.$uri
-             .'&is_remember_login='.(int)$this->getAuthAdapter()->getAuthForm()->getValue('is_remember_me')
-             .'&sid='.rawurlencode($item[0])
-             .'&ts='.rawurlencode($item[1]);
-      }
 
       $this->setCulture($this->getMember()->getConfig('language', sfConfig::get('sf_default_culture')));
 

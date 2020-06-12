@@ -219,14 +219,6 @@
         <target>%friend%ではありません。</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Register Mobile phone</source>
-        <target>携帯登録</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>When mobile information registration is done from following URL, the member registration is completed.</source>
-        <target>以下のURLから携帯登録をおこなうと、メンバー登録が完了します。</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Settings</source>
         <target>設定</target>
       </trans-unit>
@@ -317,26 +309,6 @@
       <trans-unit id="">
         <source>If you edit this page, please visit %1%.</source>
         <target>プロフィールを変更する場合は「%1%」よりおこなってください。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>It is necessary to register the mobile-phone information to entry in %1%.</source>
-        <target>%1%に参加するには、携帯電話の登録が必要です。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Please note that you cannot use smartphones.</source>
-        <target>スマートフォンからは登録することができませんのでご注意ください。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Register the mobile-phone</source>
-        <target>携帯電話の登録</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>URL for mobile registration is send to the mobile mail address appropriating input here.</source>
-        <target>ここで入力した携帯メールアドレス宛に、携帯登録用のURLを送信します。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Please set your mobile phone to receive a mail from %1%.</source>
-        <target>ドメイン指定受信機能などをお使いの方は、携帯電話で「%1%」からのメールを受信できるように設定してください。</target>
       </trans-unit>
       <trans-unit id="">
         <source>%nickname%</source>
@@ -1298,18 +1270,6 @@
       <trans-unit id="">
         <source>Terms of service</source>
         <target>利用規約</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Mobile E-mail Address Registration Completed</source>
-        <target>携帯登録メール送信完了</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>When mobile information registration is done, the member registration is completed.</source>
-        <target>携帯登録をおこなうと、メンバー登録が完了します。</target>
-      </trans-unit>
-      <trans-unit id="">
-        <source>Sent a mail for your mobile e-mail address. Begin your registration from a URL in the mail.</source>
-        <target>入力された携帯メールアドレス宛てにメールを送信いたしましたので、メール内に記載されたURLから携帯登録をおこなってください。</target>
       </trans-unit>
       <trans-unit id="">
         <source>Search Members</source>

@@ -23,14 +23,6 @@ class opAuthAction extends sfActions
 
     $member = $this->getUser()->getMember(true);
 
-    if (opConfig::get('retrieve_uid') == 3
-      && !sfConfig::get('app_is_mobile', false)
-      && !$member->getConfig('mobile_uid')
-    )
-    {
-      $this->forward('member', 'registerMobileToRegisterEnd');
-    }
-
     $this->getUser()->getAuthAdapter()->activate();
 
     $this->getUser()->setIsSNSMember(true);

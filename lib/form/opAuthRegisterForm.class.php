@@ -52,28 +52,7 @@ abstract class opAuthRegisterForm extends BaseForm
 
     parent::__construct($defaults, $options, false);
 
-    $this->setValidator('mobile_uid', new sfValidatorPass());
-    $this->setValidator('mobile_cookie_uid', new sfValidatorPass());
-
-    $this->mergePostValidator(new sfValidatorCallback(array('callback' => array($this, 'validateMobileUID'))));
-
     $this->widgetSchema->setNameFormat('auth[%s]');
-  }
-
-  public function renderFormTag($url, array $attributes = array())
-  {
-    $result = parent::renderFormTag($url, $attributes);
-
-    if (sfConfig::get('app_is_mobile') && opConfig::get('retrieve_uid'))
-    {
-      $pos = strpos($result, '>');
-      $head = substr($result, 0, $pos);
-      $foot = substr($result, $pos);
-
-      $result = $head.' utn'.$foot;
-    }
-
-    return $result;
   }
 
   /**
@@ -120,42 +99,7 @@ abstract class opAuthRegisterForm extends BaseForm
     $this->memberForm->bind($request->getParameter('member'));
     $this->profileForm->bind($request->getParameter('profile'));
     $this->configForm->bind($request->getParameter('member_config'));
-    $this->bind($request->getParameter('auth', array(
-      'mobile_uid'        => '',
-      'mobile_cookie_uid' => '',
-    )));
-  }
-
-  public function validateMobileUID($validator, $values, $arguments = array())
-  {
-    if (!opConfig::get('retrieve_uid'))
-    {
-      return $values;
-    }
-
-    if (sfConfig::get('app_is_mobile', false))
-    {
-      $request = sfContext::getInstance()->getRequest();
-      $uid = $request->getMobileUID(false);
-      if (!$uid && opConfig::get('retrieve_uid') >= 2)
-      {
-        throw new sfValidatorError($validator, 'A mobile UID is required. Please check settings of your mobile phone and retry.');
-      }
-      elseif (Doctrine::getTable('MemberConfig')->retrieveByNameAndValue('mobile_uid', $uid))
-      {
-        throw new sfValidatorError($validator, 'A mobile UID was already registered.');
-      }
-
-      $cookieUid = sfContext::getInstance()->getResponse()->generateMobileUidCookie();
-      if ($cookieUid)
-      {
-        $values['mobile_cookie_uid'] = $cookieUid;
-      }
-
-      $values['mobile_uid'] = $uid;
-    }
-
-    return $values;
+    $this->bind($request->getParameter('auth'));
   }
 
   public function save()
@@ -169,16 +113,6 @@ abstract class opAuthRegisterForm extends BaseForm
 
     if ($member && $profile && $auth && $config)
     {
-      if ($this->getValue('mobile_uid'))
-      {
-        $this->getMember()->setConfig('mobile_uid', $this->getValue('mobile_uid'));
-      }
-
-      if ($this->getValue('mobile_cookie_uid'))
-      {
-        $this->getMember()->setConfig('mobile_cookie_uid', $this->getValue('mobile_cookie_uid'));
-      }
-
       $communities = Doctrine::getTable('Community')->getDefaultCommunities();
       if($communities)
       {
