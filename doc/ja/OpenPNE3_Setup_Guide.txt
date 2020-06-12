@@ -113,7 +113,6 @@ http://www.openpne.jp/pne-downloads/
   +-- web/  (ディレクトリ名は変更可能)
       +-- index.php
       +-- js/
-      +-- mobile_frontend.php
       +-- pc_backend.php
         :
 
@@ -229,23 +228,6 @@ cron ファイルに設定権限を付加します。
 なお、デイリー・ニュースはデフォルトの状態ではコンテンツがありません。
 
 管理画面のガジェット設定から、デイリー・ニュースに対応したプラグインが提供するコンテンツを選択して使用してください。
-
-メール投稿設定
---------------
-
-メール投稿のための設定をおこないます。メール投稿をおこなわない場合はスキップして構いません。
-
-設定例 (Postfix を使用する場合)
-+++++++++++++++++++++++++++++++
-
-/etc/postfix/virtual を以下のように設定します::
-
-  example.com anything
-  @example.com openpne_user
-
-/etc/aliases を以下のように設定します::
-
-  openpne_user: "| php /path/to/openpne/symfony openpne:execute-mail-action"
 
 ブラウザからアクセス(PC)
 ------------------------

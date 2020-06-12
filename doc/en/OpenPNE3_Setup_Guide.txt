@@ -114,7 +114,6 @@ Set the files to be the following structure:
   +-- web/ (This directory name can be changed)
       +-- index.php
       +-- js/
-      +-- mobile_frontend.php
       +-- pc_backend.php
         :
 
@@ -230,23 +229,6 @@ In /etc/crontab, write:
 As well the contents of the daily news is nothing in default.
 
 Select contents provided by the plugin of the daily news in gadget settings within Administration page(http://example.com/pc_backend.php), when you use delivering email.
-
-Posting Email Setting
----------------------
-
-Set for posting email. If you don't use this function, you can skip over this chapter.
-
-Setting example (when Postfix is used)
-++++++++++++++++++++++++++++++++++++++
-
-In /etc/postfix/virtual, set::
-
-  example.com anything
-  @example.com openpne_user
-
-In /etc/aliases, set::
-
-  openpne_user: "| php /path/to/openpne/symfony openpne:execute-mail-action"
 
 Access from Web Browser (PC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
