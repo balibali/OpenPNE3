@@ -686,10 +686,6 @@
         <target>認証関連設定</target>
       </trans-unit>
       <trans-unit id="">
-        <source>Mobile Configuration</source>
-        <target>携帯関連設定</target>
-      </trans-unit>
-      <trans-unit id="">
         <source>Site Policy Configuration</source>
         <target>サイトポリシー関連設定</target>
       </trans-unit>

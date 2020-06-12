@@ -23,18 +23,6 @@ enable_pc:
     - "無効にする"
     - "有効にする"
 
-enable_mobile:
-  Name:      "enable_mobile"
-  Caption:   "携帯版有効設定"
-  FormType:  "radio"
-  ValueType: "text"
-  IsConfig:   true
-  IsRequired: true
-  Default:    1
-  Choices:
-    - "無効にする"
-    - "有効にする"
-
 self_invite_action:
   IsConfig: false
   Default:  ""

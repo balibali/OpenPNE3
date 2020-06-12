@@ -12,13 +12,11 @@ general:
   _attributes:
     caption: "General Configuration"
     enable_pc:     true
-    enable_mobile: true 
 
 publicFlag:
   _attributes:
     caption: "Public Flag Configuration"
     enable_pc:     true
-    enable_mobile: true
   profile_page_public_flag:
     Name:       "profile_page_public_flag"
     Caption:    "Public Flag for Profile Page"
@@ -54,8 +52,6 @@ pcAddress:
   _attributes:
     caption: "PC E-mail Address Configuration"
     enable_pc:     true
-    enable_mobile: true
-    depending_sns_config: enable_pc
   pc_address:
     Name:       "pc_address"
     Caption:    "PC E-mail Address"
@@ -71,8 +67,6 @@ mobileAddress:
   _attributes:
     caption: "Mobile E-mail Address Configuration"
     enable_pc:     true
-    enable_mobile: true
-    depending_sns_config: enable_mobile
   mobile_address:
     Name:       "mobile_address"
     Caption:    "Mobile E-mail Address"
@@ -88,7 +82,6 @@ password:
   _attributes:
     caption: "Password Configuration"
     enable_pc:     true
-    enable_mobile: true
   password:
     Name:       "password"
     Caption:    "Password"
@@ -105,7 +98,6 @@ accessBlock:
   _attributes:
     caption: "Access Block Configuration"
     enable_pc:     true
-    enable_mobile: true 
   access_block:
     Name:       "access_block"
     Caption:    "Access Block"
@@ -121,7 +113,6 @@ mail:
   _attributes:
     caption: "Mail Configuration"
     enable_pc:     true
-    enable_mobile: true 
   daily_news:
     Default: 2
 
@@ -129,7 +120,6 @@ language:
   _attributes:
     caption: "Language and Time Zone Configuration"
     enable_pc:     true
-    enable_mobile: false
   language:
     Name:       "language"
     Caption:    "Language"
