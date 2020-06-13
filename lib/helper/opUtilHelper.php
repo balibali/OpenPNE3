@@ -703,28 +703,6 @@ function op_within_page_link($marker = '▼')
   return content_tag('a', $marker, $options);
 }
 
-function op_mail_to($route, $params = array(), $name = '', $options = array(), $default_value = array())
-{
-  $configuration = sfContext::getInstance()->getConfiguration();
-  $configPath = '/mobile_mail_frontend/config/routing.yml';
-  $files = array_merge(array(sfConfig::get('sf_apps_dir').$configPath), $configuration->globEnablePlugin('/apps'.$configPath));
-
-  $user = sfContext::getInstance()->getUser();
-
-  if (sfConfig::get('op_is_mail_address_contain_hash') && $user->hasCredential('SNSMember'))
-  {
-    $params['hash'] = $user->getMember()->getMailAddressHash();
-  }
-
-  $routing = new opMailRouting(new sfEventDispatcher());
-  $config = new sfRoutingConfigHandler();
-  $routes = $config->evaluate($files);
-
-  $routing->setRoutes(array_merge(sfContext::getInstance()->getRouting()->getRoutes(), $routes));
-
-  return mail_to($routing->generate($route, $params), $name, $options, $default_value);
-}
-
 function op_banner($name)
 {
   $banner = Doctrine::getTable('Banner')->findByName($name);
