@@ -136,10 +136,6 @@ $browser
   ->post('/member/editProfile')
   ->checkCSRF()
 
-  ->info('/member/registerMobileToRegisterEnd - CSRF')
-  ->post('/member/registerMobileToRegisterEnd', array('member_config' => array()))
-  ->checkCSRF()
-
 // XSS
   ->login('html1@example.com', 'password')
 

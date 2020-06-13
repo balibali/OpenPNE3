@@ -22,14 +22,6 @@ $t->is($table->getTypesByAppName('pc'), array(
   'friend',
   'community',
 ));
-$t->is($table->getTypesByAppName('mobile'), array(
-  'mobile_global',
-  'mobile_home',
-  'mobile_home_center',
-  'mobile_home_side',
-  'mobile_friend',
-  'mobile_community'
-));
 $t->is($table->getTypesByAppName('backend'), array(
   'backend_side'
 ));

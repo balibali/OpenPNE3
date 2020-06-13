@@ -80,30 +80,6 @@ $browser
     ->check('Gadget', array('id' => '4', 'sort_order' => 20), true)
   ->end()
 
-//---
-  ->info('4. You can add and sort mobile home gadget')
-  ->get('/design/gadget/type/mobile')
-  ->info('Add gadgets to all areas')
-  ->click('設定変更', array('new' => array(
-    'mobileTop' => array('informationBox'),
-    'mobileContents' => array('informationBox'),
-    'mobileBottom' => array('informationBox'),
-  )))
-  ->with('doctrine')->begin()
-    ->check('Gadget', array('type' => 'mobileTop'), 2)
-    ->check('Gadget', array('type' => 'mobileContents'), 1)
-    ->check('Gadget', array('type' => 'mobileBottom'), 1)
-  ->end()
-  ->get('/design/gadget/type/mobile')
-  ->info('Sort some gadgets')
-  ->click('設定変更', array('gadget' => array(
-    'mobileTop' => array(20, 5),
-  )))
-  ->with('doctrine')->begin()
-    ->check('Gadget', array('id' => '20', 'sort_order' => 10), true)
-    ->check('Gadget', array('id' => '5', 'sort_order' => 20), true)
-  ->end()
-
 // CSRF
   ->info('5. CSRF check')
 
@@ -133,9 +109,5 @@ $browser
 
   ->info('/design/customCss')
   ->post('/design/customCss')
-  ->checkCSRF()
-
-  ->info('/design/mobileColorConfig')
-  ->post('/design/mobileColorConfig')
   ->checkCSRF()
 ;

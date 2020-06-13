@@ -14,10 +14,6 @@ $browser
   ->post('/navigation/edit/app/pc')
   ->checkCSRF()
 
-  ->info('/navigation/edit/app/mobile - CSRF')
-  ->post('/navigation/edit/app/mobile')
-  ->checkCSRF()
-
   ->info('/navigation/edit/app/backEnd - CSRF')
   ->post('/navigation/edit/app/backend')
   ->checkCSRF()

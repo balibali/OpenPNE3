@@ -24,14 +24,6 @@ $browser
   ->post('/member/reissuePassword/id/2')
   ->checkCSRF()
 
-  ->info('/member/blacklist/uid - CSRF')
-  ->post('/member/blacklist/uid')
-  ->checkCSRF()
-
-  ->info('/member/blacklistDelete/id/1 - CSRF')
-  ->post('/member/blacklistDelete/id/1')
-  ->checkCSRF()
-
   ->info('/member/invite - CSRF')
   ->post('/member/invite')
   ->checkCSRF()

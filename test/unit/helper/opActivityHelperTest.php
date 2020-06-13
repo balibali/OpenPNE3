@@ -40,10 +40,6 @@ $t->is(op_activity_body_filter($activity4), '<a href="http://www.openpne.jp" tar
 $t->is(op_activity_body_filter($activity4, false), 'http://www.openpne.jp', 'op_activity_body_filter() returns "http//www.openpne.jp"');
 $t->is(op_activity_body_filter($activity5), '<a href="/index.php/">http://www.openpne.jp</a>', 'op_activity_body_filter() returns linked text by uri of ActivityData');
 
-sfConfig::set('sf_app', 'mobile_frontend');
-
-$t->is(op_activity_body_filter($activity4), '<a href="http://sns.example.com/proxy?url=http%3A%2F%2Fwww.openpne.jp">http://www.openpne.jp</a>', 'op_activity_body_filter() returns autolinked text');
-
 function test_filter(sfEvent $event, $value)
 {
   return '';

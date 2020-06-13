@@ -635,18 +635,8 @@ Gadget:
     name: "languageSelecterBox"
     sort_order: 10
 
-  mobile_gadget_information:
-    type: "mobileTop"
-    name: "informationBox"
-    sort_order: 10
-
   login_gadget_login_form_box:
     type: "loginTop"
-    name: "loginForm"
-    sort_order: 10
-
-  mobile_login_gadget_login_form_box:
-    type: "mobileLoginContents"
     name: "loginForm"
     sort_order: 10
 
@@ -658,11 +648,6 @@ Gadget:
   profile_gadget_profile:
     type: "profileContents"
     name: "profileListBox"
-    sort_order: 10
-
-  mobile_profile_gadget_friend_table:
-    type: "mobileProfileBottom"
-    name: "friendListBox"
     sort_order: 10
 
   gadget_community_table:
@@ -698,10 +683,6 @@ SnsConfig:
   sns_config2:
     name: "daily_news_day"
     value: [0, 3]
-
-Blacklist:
-  dummy_black_uid:
-    uid: "TEST"
 
 OAuthConsumerInformation:
   dummy_consumer_information1:
@@ -799,30 +780,12 @@ SnsTerm:
       en:
         value: "friend"
 
-  term_friend_mobile_frontend:
-    name: "friend"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾌﾚﾝﾄﾞ"
-      en:
-        value: "friend"
-
   term_my_friend_pc_frontend:
     name: "my_friend"
     application: "pc_frontend"
     Translation:
       ja_JP:
         value: "マイフレンド"
-      en:
-        value: "my friend"
-
-  term_my_friend_mobile_frontend:
-    name: "my_friend"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾏｲﾌﾚﾝﾄﾞ"
       en:
         value: "my friend"
 
@@ -835,30 +798,12 @@ SnsTerm:
       en:
         value: "community"
 
-  term_community_mobile_frontend:
-    name: "community"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ｺﾐｭﾆﾃｨ"
-      en:
-        value: "community"
-
   term_nickname_pc_frontend:
     name: "nickname"
     application: "pc_frontend"
     Translation:
       ja_JP:
         value: "ニックネーム"
-      en:
-        value: "nickname"
-
-  term_nickname_mobile_frontend:
-    name: "nickname"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾆｯｸﾈｰﾑ"
       en:
         value: "nickname"
 
@@ -951,30 +896,12 @@ SnsTerm:
       en:
         value: "friend"
 
-  term_friend_mobile_frontend:
-    name: "friend"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾌﾚﾝﾄﾞ"
-      en:
-        value: "friend"
-
   term_my_friend_pc_frontend:
     name: "my_friend"
     application: "pc_frontend"
     Translation:
       ja_JP:
         value: "マイフレンド"
-      en:
-        value: "my friend"
-
-  term_my_friend_mobile_frontend:
-    name: "my_friend"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾏｲﾌﾚﾝﾄﾞ"
       en:
         value: "my friend"
 
@@ -987,30 +914,12 @@ SnsTerm:
       en:
         value: "community"
 
-  term_community_mobile_frontend:
-    name: "community"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ｺﾐｭﾆﾃｨ"
-      en:
-        value: "community"
-
   term_nickname_pc_frontend:
     name: "nickname"
     application: "pc_frontend"
     Translation:
       ja_JP:
         value: "ニックネーム"
-      en:
-        value: "nickname"
-
-  term_nickname_mobile_frontend:
-    name: "nickname"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ﾆｯｸﾈｰﾑ"
       en:
         value: "nickname"
 
@@ -1023,29 +932,11 @@ SnsTerm:
       en:
         value: "activity"
 
-  term_activity_mobile_frontend:
-    name: "activity"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "ｱｸﾃｨﾋﾞﾃｨ"
-      en:
-        value: "activity"
-
   term_post_activity_pc_frontend:
     name: "post_activity"
     application: "pc_frontend"
     Translation:
       ja_JP:
         value: "アクティビティ投稿"
-      en:
-        value: "Post Activity"
-
-  term_post_activity_mobile_frontend:
-    name: "post_activity"
-    application: "mobile_frontend"
-    Translation:
-      ja_JP:
-        value: "投稿"
       en:
         value: "Post Activity"

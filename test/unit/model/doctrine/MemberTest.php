@@ -122,13 +122,6 @@ $member1->setConfig('lastLogin', '2009-01-01 00:00:00', true);
 $t->is($member1->getLastLoginTime(), 1230735600);
 
 //------------------------------------------------------------
-$t->diag('Member::isOnBlackList()');
-$t->ok(!$member1->isOnBlackList());
-$member1->setConfig('mobile_uid', 'TEST');
-$t->ok($member1->isOnBlackList());
-$member1->setConfig('mobile_uid', null);
-
-//------------------------------------------------------------
 $t->diag('Member::getInvitingMembers()');
 $t->isa_ok($member4->getInvitingMembers(), 'Doctrine_Collection');
 
@@ -139,18 +132,12 @@ $t->isa_ok($member2->getInviteMember(), 'Member');
 //------------------------------------------------------------
 $t->diag('Member::getEmailAddress()');
 $t->is($member1->getEmailAddress(), 'sns@example.com');
-sfConfig::set('sf_app', 'mobile_frontend');
-$t->is($member1->getEmailAddress(), 'sns@m.example.com');
 $t->is($member1->getEmailAddress(true), 'sns@m.example.com');
 $t->is($member2->getEmailAddress(), null);
 
 //------------------------------------------------------------
 $t->diag('Member::getEmailAddresses()');
 $t->is($member1->getEmailAddresses(), array('sns@example.com', 'sns@m.example.com'));
-
-//------------------------------------------------------------
-$t->diag('Member::getMailAddressHash()');
-$t->is($member1->getMailAddressHash(), 'ac049c237300');
 
 //------------------------------------------------------------
 $t->diag('Member::generateRoleId()');

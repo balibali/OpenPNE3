@@ -30,11 +30,6 @@ $browser
   ->click('設定変更')
   ->isStatusCode(302)
 
-  ->info('A mobile category is selected, admin user can change the mobile configuration.')
-  ->get('/sns/config/category/mobile')
-  ->click('設定変更')
-  ->isStatusCode(302)
-
   ->info('A policy category is selected, admin user can change the policy configuration.')
   ->get('/sns/config/category/policy')
   ->click('設定変更')
@@ -51,10 +46,6 @@ $browser
 
   ->info('/sns/config/category/authentication - CSRF')
   ->post('/sns/config/category/authentication')
-  ->checkCSRF()
-
-  ->info('/sns/config/category/mobile - CSRF')
-  ->post('/sns/config/category/mobile')
   ->checkCSRF()
 
   ->info('/sns/config/category/policy - CSRF')
