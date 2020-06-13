@@ -409,66 +409,6 @@ function op_auto_link_text($text, $link = 'urls', $href_options = array('target'
   return auto_link_text($text, $link, $href_options, $truncate, $truncate_len, $pad);
 }
 
-/**
- * op_auto_link_text_for_mobile
- *
- * @param string  $text
- * @param mixed   $link         Types of text that is linked. (all|urls|email_addresses|phone_numbers)
- * @param boolean $truncate
- * @param integer $truncate_len
- * @param string  $pad
- * @param boolean $is_allow_outer_url
- */
-function op_auto_link_text_for_mobile($text, $link = null, $href_options = array(), $truncate = true, $truncate_len = 37, $pad = '...', $is_allow_outer_url = null)
-{
-  use_helper('Text');
-
-  if (is_null($link))
-  {
-    $link = sfConfig::get('op_default_mobile_auto_link_type', 'urls');
-  }
-
-  if (!$link)
-  {
-    return $text;
-  }
-
-  if (!is_array($link))
-  {
-    $link = array($link);
-  }
-
-  if (in_array('all', $link))
-  {
-    $link = array('urls', 'email_addresses', 'phone_numbers');
-  }
-
-  if (is_null($is_allow_outer_url))
-  {
-    $is_allow_outer_url = sfConfig::get('op_default_mobile_auto_link_is_allow_outer_url', true);
-  }
-
-  $result = $text;
-  if (in_array('email_addresses', $link))
-  {
-    $result = _auto_link_email_addresses($result);
-  }
-  if (in_array('phone_numbers', $link))
-  {
-    $result = _op_auto_links_phone_number($result);
-  }
-  if (in_array('urls', $link))
-  {
-    $result = _op_auto_links_urls($result, $href_options, $truncate, $truncate_len, $pad);
-    if ($is_allow_outer_url)
-    {
-      $result = _op_auto_links_outer_urls($result, $href_options, $truncate, $truncate_len, $pad);
-    }
-  }
-
-  return $result;
-}
-
 function _op_auto_links_urls($text, $href_options = array(), $truncate = false, $truncate_len = 40, $pad = '...')
 {
   $request = sfContext::getInstance()->getRequest();
@@ -779,10 +719,6 @@ function op_decoration($string, $is_strip = false, $is_use_stylesheet = null, $i
   if (is_null($is_use_stylesheet))
   {
     $is_use_stylesheet = true;
-    if ('mobile_frontend' == sfConfig::get('sf_app'))
-    {
-      $is_use_stylesheet = false;
-    }
   }
 
   return opWidgetFormRichTextareaOpenPNE::toHtml($string, $is_strip, $is_use_stylesheet, $is_html_tag_followup);

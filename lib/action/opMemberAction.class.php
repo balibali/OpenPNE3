@@ -168,7 +168,7 @@ abstract class opMemberAction extends sfActions
 
   public function executeRegisterInput(opWebRequest $request)
   {
-    $this->forward404Unless(opToolkit::isEnabledRegistration((sfConfig::get('app_is_mobile') ? 'mobile' : 'pc')));
+    $this->forward404Unless(opToolkit::isEnabledRegistration('pc'));
 
     $this->token = $request['token'];
     $member = $this->getUser()->setRegisterToken($this->token);
@@ -520,10 +520,6 @@ abstract class opMemberAction extends sfActions
       }
 
       $enabledKey = 'enable_pc';
-      if (sfConfig::get('sf_app') == 'mobile_frontend')
-      {
-        $enabledKey = 'enable_mobile';
-      }
 
       if (isset($categoryAttributes[$key][$enabledKey]))
       {

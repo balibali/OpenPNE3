@@ -21,10 +21,7 @@ class ActivityDataForm extends BaseActivityDataForm
   public function configure()
   {
     $this->useFields(array('body', 'public_flag'));
-    if (sfConfig::get('sf_app') != 'mobile_frontend')
-    {
-      $this->setWidget('body', new sfWidgetFormTextarea());
-    }
+    $this->setWidget('body', new sfWidgetFormTextarea());
     $this->setValidator('body', new opValidatorString(array('max_length' => 140, 'required' => true, 'trim' => true)));
 
     $choices = $this->getObject()->getTable()->getPublicFlags();

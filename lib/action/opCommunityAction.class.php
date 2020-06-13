@@ -73,10 +73,7 @@ abstract class opCommunityAction extends sfActions
 
     $this->communityForm       = new CommunityForm($this->community);
     $this->communityConfigForm = new CommunityConfigForm(array(), array('community' => $this->community));
-    if (!sfConfig::get('app_is_mobile', false))
-    {
-      $this->communityFileForm = new CommunityFileForm(array(), array('community' => $this->community));
-    }
+    $this->communityFileForm   = new CommunityFileForm(array(), array('community' => $this->community));
 
     if ($request->isMethod('post'))
     {
@@ -84,18 +81,12 @@ abstract class opCommunityAction extends sfActions
       $params['id'] = $this->id;
       $this->communityForm->bind($params);
       $this->communityConfigForm->bind($request->getParameter($this->communityConfigForm->getName()));
-      if($this->communityFileForm)
-      {
-        $this->communityFileForm->bind($request->getParameter($this->communityFileForm->getName()), $request->getFiles($this->communityFileForm->getName()));
-      }
+      $this->communityFileForm->bind($request->getParameter($this->communityFileForm->getName()), $request->getFiles($this->communityFileForm->getName()));
       if ($this->communityForm->isValid() && $this->communityConfigForm->isValid() && (!$this->communityFileForm || $this->communityFileForm->isValid()))
       {
         $this->communityForm->save();
         $this->communityConfigForm->save();
-        if ($this->communityFileForm)
-        {
-          $this->communityFileForm->save();
-        }
+        $this->communityFileForm->save();
 
         $this->redirect('@community_home?id='.$this->community->getId());
       }

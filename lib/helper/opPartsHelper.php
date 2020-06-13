@@ -180,22 +180,6 @@ function include_customizes($id, $name, $vars = null)
 }
 
 /**
- * Set the op_mobile_header slot
- *
- * @param string $title
- * @param string $subtitle
- */
-function op_mobile_page_title($title, $subtitle = '')
-{
-  $params = array(
-    'title' => sfOutputEscaper::unescape($title),
-    'subtitle' => sfOutputEscaper::unescape($subtitle),
-  );
-
-  slot('op_mobile_header', get_partial('global/partsPageTitle', $params));
-}
-
-/**
  * Includes a login parts.
  *
  * @param string $id

@@ -61,14 +61,12 @@ abstract class opAdaptableUser extends opBaseSecurityUser
 
   public function getAuthModes()
   {
-    $is_mobile = sfConfig::get('app_is_mobile', false);
     $result = array();
 
     $adapters = $this->getAuthAdapters();
     foreach ($adapters as $authMode => $adapter)
     {
-      if (($is_mobile && !$adapter->getAuthConfig('enable_mobile'))
-        || (!$is_mobile && !$adapter->getAuthConfig('enable_pc')))
+      if (!$adapter->getAuthConfig('enable_pc'))
       {
         continue;
       }

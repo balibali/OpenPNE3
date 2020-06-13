@@ -40,7 +40,7 @@ abstract class opAuthLoginForm extends BaseForm
     $this->setWidget('next_uri', new opWidgetFormInputHiddenNextUri());
     $this->setValidator('next_uri', new opValidatorNextUri());
 
-    if ($this->getOption('is_use_remember_me', true) && !sfConfig::get('app_is_mobile'))
+    if ($this->getOption('is_use_remember_me', true))
     {
       $this->setWidget('is_remember_me', new sfWidgetFormInputCheckbox());
       $this->setValidator('is_remember_me', new sfValidatorBoolean());

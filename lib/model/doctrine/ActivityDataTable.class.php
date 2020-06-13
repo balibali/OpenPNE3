@@ -261,14 +261,7 @@ class ActivityDataTable extends Doctrine_Table
 
     if ($isCheckApp)
     {
-      if ('mobile_frontend' == sfConfig::get('sf_app'))
-      {
-        $q->andWhere('is_mobile = ?', true);
-      }
-      else
-      {
-        $q->andWhere('is_pc = ?', true);
-      }
+      $q->andWhere('is_pc = ?', true);
     }
   }
 
@@ -341,14 +334,7 @@ class ActivityDataTable extends Doctrine_Table
 
     if ($isCheckApp)
     {
-      if (sfConfig::get('sf_app') == 'mobile_frontend')
-      {
-        $q->andWhere('is_mobile = ?', true);
-      }
-      else
-      {
-        $q->andWhere('is_pc = ?', true);
-      }
+      $q->andWhere('is_pc = ?', true);
     }
   }
 
@@ -378,14 +364,7 @@ class ActivityDataTable extends Doctrine_Table
 
     if ($isCheckApp)
     {
-      if ('mobile_frontend' == sfConfig::get('sf_app'))
-      {
-        $q->andWhere('is_mobile = ?', true);
-      }
-      else
-      {
-        $q->andWhere('is_pc = ?', true);
-      }
+      $q->andWhere('is_pc = ?', true);
     }
 
     $viewerMemberId = $this->getMyMemberId();

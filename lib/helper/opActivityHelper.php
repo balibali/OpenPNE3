@@ -56,11 +56,6 @@ function op_activity_body_filter($activity, $is_auto_link = true)
 
   if ($is_auto_link)
   {
-    if ('mobile_frontend' === sfConfig::get('sf_app'))
-    {
-      return op_auto_link_text_for_mobile($body);
-    }
-
     return op_auto_link_text($body);
   }
 

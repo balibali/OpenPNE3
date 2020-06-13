@@ -237,10 +237,6 @@ class Member extends BaseMember implements opAccessControlRecordInterface
     if (is_null($isPriorityMobile))
     {
       $isPriorityMobile = false;
-      if (sfConfig::get('sf_app') == 'mobile_frontend')
-      {
-        $isPriorityMobile = true;
-      }
     }
 
     $memberPcAddress     = $this->getConfig('pc_address');
@@ -317,22 +313,6 @@ class Member extends BaseMember implements opAccessControlRecordInterface
     }
 
     return parent::delete($conn);
-  }
-
-  public function getMailAddressHash($length = null)
-  {
-    if (is_null($length))
-    {
-      $length = sfConfig::get('op_mail_address_hash_length', 12);
-    }
-
-    $hash = $this->getConfig('mail_address_hash');
-    if (!$hash)
-    {
-      $hash = md5(strval($this->id).$this->getConfig('password'));
-    }
-
-    return substr($hash, 0, (int)$length);
   }
 
   public function generateRoleId(Member $member)
