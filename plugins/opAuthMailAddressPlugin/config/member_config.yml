@@ -2,7 +2,6 @@ secretQuestion:
   _attributes:
     caption:       "Secret Question Configuration"
     enable_pc:     true
-    enable_mobile: true
   secret_question:
     Name:       "secret_question"
     Caption:    "Secret Question"

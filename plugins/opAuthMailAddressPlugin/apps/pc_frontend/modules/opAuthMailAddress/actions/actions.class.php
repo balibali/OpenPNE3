@@ -56,10 +56,6 @@ class opAuthMailAddressActions extends opAuthMailAddressPluginAction
     $mobileAddressPre = $memberConfig->getMember()->getConfig('mobile_address_pre');
     opActivateBehavior::enable();
 
-    if ('MobileUID' === $authMode)
-    {
-      $authMode = 'MailAddress';
-    }
     $this->forward404Unless($authMode === $this->getUser()->getCurrentAuthMode());
 
     if (!$pcAddressPre && !$mobileAddressPre)
