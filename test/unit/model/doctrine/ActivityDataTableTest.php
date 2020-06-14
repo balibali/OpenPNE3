@@ -21,7 +21,6 @@ $t->isa_ok($result, 'ActivityData', '->updateActivity() returns instance of Acti
 $result = $table->updateActivity(1, 'test2', array(
   'public_flag' => 2,
   'in_reply_to_activity_id' => 1,
-  'is_pc' => false,
   'source' => 'API',
   'source_uri' => 'http://sns.example.com',
   'images' => array(array(
@@ -33,7 +32,6 @@ $result = $table->updateActivity(1, 'test2', array(
 $t->isa_ok($result, 'ActivityData', '->updateActivity() returns instance of ActivityData');
 $t->is($result->getPublicFlag(), 2, 'public_flag of ActivityData that created by ->updateActivity() is 2');
 $t->is($result->getInReplyToActivityId(), 1, 'in_reply_to_activity_id of ActivityData that creatd by ->updateActivity() is 1');
-$t->cmp_ok($result->getIsPc(), '===', false, 'is_pc of ActivityData that creatd by ->updateActivity() is false');
 $t->is($result->getSource(), 'API', 'source of ActivityData that creatd by ->updateActivity() is "API"');
 $t->is($result->getSourceUri(), 'http://sns.example.com', 'source_uri of ActivityData that creatd by ->updateActivity() is "http://sns.example.com"');
 $t->is(count($result->getImages()), 1, 'images of ActivityData that created by ->updateActivity() has 1 item');

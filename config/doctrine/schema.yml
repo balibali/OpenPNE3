@@ -592,8 +592,6 @@ ActivityData:
     body: { type: string(140), notnull: true, comment: "Activity body" }
     uri: { type:string, comment: "Activity URI" }
     public_flag: { type: integer(1), notnull: true, default: 1, comment: "Public flag of activity" }
-    is_pc: { type: boolean, notnull: true, default: 1, comment: "Display this in PC?" }
-    is_mobile: { type: boolean, notnull: true, default: 1, comment: "Display this in Mobile?"} 
     source: { type: string(64), comment: "The source caption" }
     source_uri: { type: string , comment: "The source URI" }
     foreign_table: { type: string, comment: "Reference table name" }

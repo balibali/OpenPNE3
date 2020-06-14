@@ -70,15 +70,6 @@ class ActivityDataTable extends Doctrine_Table
       $object->setInReplyToActivityId($options['in_reply_to_activity_id']);
     }
 
-    if (isset($options['is_pc']) && !$options['is_pc'])
-    {
-      $object->setIsPc(false);
-    }
-    if (isset($options['is_mobile']) && !$options['is_mobile'])
-    {
-      $object->setIsMobile(false);
-    }
-
     if (isset($options['uri']))
     {
       $object->setUri($options['uri']);
@@ -228,7 +219,7 @@ class ActivityDataTable extends Doctrine_Table
     return $pager;
   }
 
-  public function addFriendActivityQuery(Doctrine_Query $q, $memberId, $isCheckApp = true)
+  public function addFriendActivityQuery(Doctrine_Query $q, $memberId)
   {
     if (is_null($memberId))
     {
@@ -258,17 +249,12 @@ class ActivityDataTable extends Doctrine_Table
     $viewerMemberId = $this->getMyMemberId();
     $blockedBy = Doctrine_Core::getTable('MemberRelationship')->getBlockedMemberIdsByTo($viewerMemberId);
     $q->whereNotIn('member_id', $blockedBy);
-
-    if ($isCheckApp)
-    {
-      $q->andWhere('is_pc = ?', true);
-    }
   }
 
-  public function getFriendActivityList($memberId = null, $limit = 5, $isCheckApp = true)
+  public function getFriendActivityList($memberId = null, $limit = 5)
   {
     $q = $this->getOrderdQuery();
-    $this->addFriendActivityQuery($q, $memberId, $isCheckApp);
+    $this->addFriendActivityQuery($q, $memberId);
     if (!is_null($limit))
     {
       $q->limit($limit);
@@ -277,15 +263,15 @@ class ActivityDataTable extends Doctrine_Table
     return $q->execute();
   }
 
-  public function getFriendActivityListPager($memberId = null, $page = 1, $size = 20, $isCheckApp = true)
+  public function getFriendActivityListPager($memberId = null, $page = 1, $size = 20)
   {
     $q = $this->getOrderdQuery();
-    $this->addFriendActivityQuery($q, $memberId, $isCheckApp);
+    $this->addFriendActivityQuery($q, $memberId);
 
     return $this->getPager($q, $page, $size);
   }
 
-  public function addActivityQuery(Doctrine_Query $q, $memberId = null, $viewerMemberId = null, $isCheckApp = true)
+  public function addActivityQuery(Doctrine_Query $q, $memberId = null, $viewerMemberId = null)
   {
     if (is_null($memberId))
     {
@@ -331,17 +317,12 @@ class ActivityDataTable extends Doctrine_Table
       $q->andWhereIn('public_flag', $flags);
     }
     $q->andWhere('in_reply_to_activity_id IS NULL');
-
-    if ($isCheckApp)
-    {
-      $q->andWhere('is_pc = ?', true);
-    }
   }
 
-  public function getActivityList($memberId = null, $viewerMemberId = null, $limit = 5, $isCheckApp = true)
+  public function getActivityList($memberId = null, $viewerMemberId = null, $limit = 5)
   {
     $q = $this->getOrderdQuery();
-    $this->addActivityQuery($q, $memberId, $viewerMemberId, $isCheckApp);
+    $this->addActivityQuery($q, $memberId, $viewerMemberId);
     if (!is_null($limit))
     {
       $q->limit($limit);
@@ -350,22 +331,17 @@ class ActivityDataTable extends Doctrine_Table
     return $q->execute();
   }
 
-  public function getActivityListPager($memberId = null, $viewerMemberId = null, $page = 1, $size = 20, $isCheckApp = true)
+  public function getActivityListPager($memberId = null, $viewerMemberId = null, $page = 1, $size = 20)
   {
     $q = $this->getOrderdQuery();
-    $this->addActivityQuery($q, $memberId, $viewerMemberId, $isCheckApp);
+    $this->addActivityQuery($q, $memberId, $viewerMemberId);
 
     return $this->getPager($q, $page, $size);
   }
 
-  public function addAllMemberActivityQuery($q, $isCheckApp = true)
+  public function addAllMemberActivityQuery($q)
   {
     $q->whereIn('public_flag', array(self::PUBLIC_FLAG_OPEN, self::PUBLIC_FLAG_SNS));
-
-    if ($isCheckApp)
-    {
-      $q->andWhere('is_pc = ?', true);
-    }
 
     $viewerMemberId = $this->getMyMemberId();
     $blockedBy = Doctrine_Core::getTable('MemberRelationship')->getBlockedMemberIdsByTo($viewerMemberId);
@@ -374,10 +350,10 @@ class ActivityDataTable extends Doctrine_Table
     return $q;
   }
 
-  public function getAllMemberActivityList($limit = 5, $isCheckApp = true)
+  public function getAllMemberActivityList($limit = 5)
   {
     $q = $this->getOrderdQuery();
-    $this->addAllMemberActivityQuery($q, $isCheckApp);
+    $this->addAllMemberActivityQuery($q);
     if (!is_null($limit))
     {
       $q->limit($limit);
@@ -386,10 +362,10 @@ class ActivityDataTable extends Doctrine_Table
     return $q->execute();
   }
 
-  public function getAllMemberActivityListPager($page = 1, $size = 20, $isCheckApp = true)
+  public function getAllMemberActivityListPager($page = 1, $size = 20)
   {
     $q = $this->getOrderdQuery();
-    $this->addAllMemberActivityQuery($q, $isCheckApp);
+    $this->addAllMemberActivityQuery($q);
 
     return $this->getPager($q, $page, $size);
   }
